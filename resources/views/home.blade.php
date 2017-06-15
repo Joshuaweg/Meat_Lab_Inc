@@ -12,6 +12,12 @@
                     @foreach($posts as $post)
                     <p>{{$post->postAuthor->Username}} : {{$post->body}}</p></br>
                     @endforeach
+                    </br>
+                    </br>
+                    {!!Form::open(array('url'=>'/savecomment','method'=>'POST'))!!}
+                    {{!!Form::textarea('body')!!}
+                    {!!Form::Submit('Submit')!!}
+                    {!!Form::close()!!}
 
                 </div>
                 <div>

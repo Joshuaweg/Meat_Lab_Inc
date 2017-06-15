@@ -16,9 +16,10 @@ class ForumPostController extends Controller
     // 		]);
     // }
     public function create(ForumRequest $request){
+
     	ForumPost::create(['Userid'=>Auth::user()->id,
     	'body' => $request ->input('body'),]);
-    	return view('home');
+    	return redirect('home');
     }
     public function index(){
     	$posts= ForumPost::with('postAuthor')->get();
