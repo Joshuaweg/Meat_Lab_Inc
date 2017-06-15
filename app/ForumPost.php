@@ -9,7 +9,7 @@ class ForumPost extends Model
     protected $fillable = [
         'Userid','body',
     ];
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *

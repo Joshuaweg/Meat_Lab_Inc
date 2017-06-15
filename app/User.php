@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function posts(){
-     this->hasMany('App\ForumPost');  
+    public function comments(){
+       return $this->hasMany('App/ForumPost');
     }
 }

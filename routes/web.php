@@ -18,5 +18,9 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('login');
 Auth::routes();
+Route::post('/savecomment','ForumPostController@create');
+Route::get('/comment',function(){
+	return view('comment');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
