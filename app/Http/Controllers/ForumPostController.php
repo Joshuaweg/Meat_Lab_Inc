@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ForumRequest;
 use App\ForumPost;
+use App\User;
 use Auth;
 
 class ForumPostController extends Controller
@@ -17,7 +18,13 @@ class ForumPostController extends Controller
     public function create(ForumRequest $request){
     	ForumPost::create(['Userid'=>Auth::user()->id,
     	'body' => $request ->input('body'),]);
+    	return view('home');
     }
-    
+    public function index(){
+    	$posts= ForumPost::with('postAuthor')->get();
+    	//dd($posts);
+    	return view ('home',compact('posts'));
+    }
+
 }
 

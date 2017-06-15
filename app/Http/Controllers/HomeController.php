@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ForumPost;
+
 
 class HomeController extends Controller
 {

@@ -8,7 +8,14 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    You are logged in!</br>
+                    @foreach($posts as $post)
+                    <p>{{$post->postAuthor->Username}} : {{$post->body}}</p></br>
+                    @endforeach
+
+                </div>
+                <div>
+
                 </div>
             </div>
         </div>

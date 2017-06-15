@@ -23,4 +23,4 @@ Route::get('/comment',function(){
 	return view('comment');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ForumPostController@index')->name('home');
