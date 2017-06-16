@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ForumRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -64,12 +65,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //dd($data);
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'Username' => $data['Username'],
+            'Biography' => $data['Biography'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }
+    
 }

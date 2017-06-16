@@ -23,8 +23,9 @@ class ForumPostController extends Controller
     }
     public function index(){
     	$posts= ForumPost::with('postAuthor')->get();
+        $user =Auth::user();
     	//dd($posts);
-    	return view ('home',compact('posts'));
+    	return view ('home',compact('posts','user'));
     }
 
 }

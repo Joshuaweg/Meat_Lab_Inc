@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ForumPost;
+use App\Http\Requests\ForumRequest;
 
 class ResourceController extends Controller
 {
@@ -56,7 +58,10 @@ class ResourceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = ForumPost::find($id);
+        $user->body= $request->input('body');
+        user->save();
+        return redirect ('home');
     }
 
     /**

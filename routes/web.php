@@ -22,5 +22,32 @@ Route::post('/savecomment','ForumPostController@create');
 Route::get('/comment',function(){
 	return view('comment');
 });
+Route::get('/account', function(){
+	$user = Auth::user();
+	//dd($user);
+	return view('account',compact('user'));
+});
+Route::get('/username', function(){
+	//dd($user);
+	return view('username');
+});
+Route::resource('forumposts', 'PostForumResourceController');
+Route::get('forumposts.edit',function($postid){
+	$posts= App\ForumPost::with('postAuthor')->get();
+        $user =Auth::user();
+		return view('forumposts');
+});
+Route::get('/makecomment', function(){
+	//dd($user);
+	$posts= App\ForumPost::with('postAuthor')->get();
+        $user =Auth::user();
+	return view('makecomment',compact('posts','user'));
+});
+Route::get('/bio', function(){
+	//dd($user);
+	return view('bio');
+});
+Route::post('/saveusername','HomeController@updateUsername');
+Route::post('/savebio','HomeController@updateBiography');
 
 Route::get('/home', 'ForumPostController@index')->name('home');
