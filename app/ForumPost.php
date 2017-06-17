@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Comments;
 
 class ForumPost extends Model
 {
@@ -19,5 +20,8 @@ class ForumPost extends Model
    
 public function postAuthor(){
 	return $this ->hasOne('App\User','id','Userid');
+}
+public function postComment(){
+	return $this ->hasMany('App\Comments','id','postid');
 }
 }

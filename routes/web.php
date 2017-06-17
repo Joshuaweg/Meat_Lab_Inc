@@ -30,6 +30,7 @@ Route::get('/account', function(){
 Route::get('/username', function(){
 	//dd($user);
 	return view('username');
+Route::resource('resource','ResourceController');
 });
 Route::resource('forumposts', 'PostForumResourceController');
 Route::get('forumposts.edit',function($postid){
@@ -37,12 +38,11 @@ Route::get('forumposts.edit',function($postid){
         $user =Auth::user();
 		return view('forumposts');
 });
-Route::get('/makecomment', function(){
+Route::get('/makecomment/{postid2}', function($postid2){
 	//dd($user);
-	$posts= App\ForumPost::with('postAuthor')->get();
-        $user =Auth::user();
-	return view('makecomment',compact('posts','user'));
+	return view('makecomment',compact('postid2'));
 });
+Route::post('/savemakecomment/{postid2}','ResourceController@createComment');
 Route::get('/bio', function(){
 	//dd($user);
 	return view('bio');

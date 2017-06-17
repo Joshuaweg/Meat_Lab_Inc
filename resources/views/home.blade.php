@@ -9,15 +9,24 @@
 
                 <div class="panel-body">
                     You are logged in!</br>
-                    @foreach($posts as $post)
-                    <p>{{$post->postAuthor->Username}} : {{$post->body}}</p></br>
+                      <?php $postid2 ?>
+                    @foreach($posts as $post) 
+                    <p>{{$post->postAuthor->Username}} : {{$post->body}}
+
+                    </p></br>
+                    <p>Comment/{{$post->postAuthor->Username }}:</p></br>
+                   @foreach($comments as $comment)
+                   <p>{{$comment->body}}</p>
+                   @endforeach
                     @if($post->postAuthor->id === $user->id)
-                        <?php $postid = $post->id?>
-                        {!!Form::open(array('route'=>array('forumposts.edit',$postid), 'method'=>'GET'))!!}
+                        <?php $postid = $post->id;
+                               $postid2 = $postid;
+                        ?>
+                        {!!Form::open(array('route'=>array('forumposts.edit',$postid2), 'method'=>'GET'))!!}
                         {!!Form::submit('edit')!!}
                         {!!Form::close()!!}
                     @endif
-                        {!!Form::open(array('url'=>'/ForumPost',$postid, 'method'=>'GET'))!!}
+                        {!!Form::open(array('url'=>array('/makecomment', $postid2), 'method'=>'GET'))!!}
                         {!!Form::submit('comment')!!}
                         {!!Form::close()!!}
                     @endforeach

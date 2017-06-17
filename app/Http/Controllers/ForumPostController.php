@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ForumRequest;
 use App\ForumPost;
 use App\User;
+use App\Comments;
 use Auth;
 
 class ForumPostController extends Controller
@@ -24,8 +25,10 @@ class ForumPostController extends Controller
     public function index(){
     	$posts= ForumPost::with('postAuthor')->get();
         $user =Auth::user();
-    	//dd($posts);
-    	return view ('home',compact('posts','user'));
+        $commentspost=ForumPost::with('postComment')->get();
+        $comments = Comments::with('commentPost')->get();
+    	//dd($comments);
+    	return view ('home',compact('posts','user','comments','comments'));
     }
 
 }
